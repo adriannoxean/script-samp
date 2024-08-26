@@ -1,20 +1,15 @@
 #!/bin/bash
 
 # Definições básicas
-StartAMD="./samp03svr"         # Comando Start para amd.
-StartARM="sh -c box86 ./samp03svr"  # Comando Start para arm.
-Stop_CMD="Parar Servidor"     # Comando para parar o Servidor do NoHub.
+Start_CMD="./samp03svr"       # Comando Start para AMD64.
+Stop_CMD="Parar Servidor"     # Comando para parar o Servidor.
 Plugin_Dir="./plugins"        # Diretório onde os plugins são armazenados.
 Server_Cfg="./server.cfg"     # Arquivo de configuração do servidor.
 
 # Função para iniciar o servidor
 start_server() {
     echo "🔵 Iniciando o servidor SA-MP..."
-    if [ "$(uname -m)" == "x86_64" ]; then
-        $StartAMD
-    else
-        $StartARM
-    fi
+    $Start_CMD
 }
 
 # Função para parar o servidor
