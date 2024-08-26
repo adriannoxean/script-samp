@@ -34,12 +34,12 @@ function update_plugins_in_server_cfg {
     # Checar se o diretório de plugins existe
     if [ -d "$PLUGIN_DIR" ]; then
         # Encontrar todos os arquivos .so no diretório de plugins
-        PLUGINS=$(ls $PLUGIN_DIR/*.so | xargs -n 1 basename | tr '\n' ' ')
+        PLUGINS=$(ls $PLUGIN_DIR/*.so 2>/dev/null | xargs -n 1 basename | tr '\n' ' ')
         
         # Atualizar o server.cfg com os plugins
         sed -i '/^plugins /d' $SERVER_CFG
         echo "plugins $PLUGINS" >> $SERVER_CFG
-        echo "plugins atualizados no server.cfg com sucesso."
+        echo "Plugins atualizados no server.cfg com sucesso."
     else
         echo "Diretório de plugins não encontrado."
     fi
